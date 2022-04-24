@@ -10,15 +10,28 @@ document.querySelector('#btnMostrarPrimos').addEventListener('click', e => {
         // Obtener la cantidad de primos a mostrar
         const cantidadPrimos = parseInt(document.querySelector('#inputCantidadPrimos').value);
         
-        // Calcular la lista de números primos
+        // Calcular la lista de números primos, además, el tiempo de duracion del algoritmo
+        const tiempoInicial = Date.now()
         const numerosPrimosObtenidos = listaPrimos(cantidadPrimos);
+        const tiempoFinal = Date.now()
 
-        // Mostrar los números primos en pantalla
+        mostrarDuracionAlgoritmo(tiempoInicial, tiempoFinal);
+
         mostrarNumerosEnPantalla(numerosPrimosObtenidos)
     }, 120)
     
 });
 
+/**
+ * Calcula la diferencia de tiempos y la muestra en pantalla.
+ * @param {number} tiempoInicial 
+ * @param {number} tiempoFinal 
+ */
+ function mostrarDuracionAlgoritmo(tiempoInicial, tiempoFinal) {
+    const duracion = tiempoFinal - tiempoInicial;
+
+    document.querySelector('#salidaDuracionAlgoritmo').innerText = duracion;
+}
 
 /**
  * Muestra en pantalla la lista de números en formato "2, 3, 4, 5, ..."
